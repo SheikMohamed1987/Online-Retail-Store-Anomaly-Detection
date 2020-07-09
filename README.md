@@ -3,6 +3,9 @@ Modelling Customer Churn When Churns Are Not Explicitly Observed.
 
 Thanks to Susan for insights - Her article URL in R programming - https://towardsdatascience.com/modelling-customer-churn-when-churns-are-not-explicitly-observed-with-r-a768a1c919d5
 
+
+Dataset: https://archive.ics.uci.edu/ml/datasets/Online+Retail
+
 Customer churn can be characterized as either contractual or non-contractual. It can also be characterized as voluntary or non-voluntary depending on the cancellation mechanism.
 We will only discuss non-contractual and voluntary churn today.
 Non-Contractual
