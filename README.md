@@ -1,4 +1,4 @@
-# Online-Retail-Store-UCI-ML-Data---Customer-Churn-Modelling---Anamoly-Detection
+# Online-Retail-Store-UCI-ML-Data---Customer-Churn-Modelling---Anomaly-Detection
 Modelling Customer Churn When Churns Are Not Explicitly Observed.
 
 Thanks to Susan for insights - Her article URL in R programming - https://towardsdatascience.com/modelling-customer-churn-when-churns-are-not-explicitly-observed-with-r-a768a1c919d5
