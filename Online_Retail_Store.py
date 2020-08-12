@@ -106,7 +106,7 @@ def visualize(Cust_ID):
     plt.ylabel('Cumulative probability')
     plt.show()
 
-st.title("Online Retail Store - Customer Churn Modeling - Anamoly Detection")
+st.title("Online Retail Store - Customer Churn Modeling - Anomaly Detection")
 visualize(Cust_ID)
 st.pyplot()
 
