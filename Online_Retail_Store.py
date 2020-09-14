@@ -5,6 +5,7 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 from statsmodels.distributions.empirical_distribution import ECDF
+import seaborn as sns
 
 #Data Ingestion
 @st.cache(allow_output_mutation=True)
@@ -97,18 +98,23 @@ def Calculate_risk_forChurn(custID):
 df = online_retail_data_UK_Final['CustomerID'].unique()
 
 Cust_ID = st.sidebar.selectbox("Choose Customer ID", df[28:38])
-
-def visualize(Cust_ID):
-    ecdf = ECDF(online_retail_data_UK_Final[online_retail_data_UK_Final['CustomerID'] == Cust_ID]['Between_purchase_days'].dropna())
-    plt.plot(ecdf.x, ecdf.y)
-    plt.title('Customer Between Purchase Days ECDF Plot')
-    plt.xlabel('Between Purchase Days')
-    plt.ylabel('Cumulative probability')
-    plt.show()
+ecdf = ECDF(online_retail_data_UK_Final[online_retail_data_UK_Final['CustomerID'] == Cust_ID]['Between_purchase_days'].dropna())
 
 st.title("Online Retail Store - Customer Churn Modeling - Anomaly Detection")
-visualize(Cust_ID)
-st.pyplot()
+
+st.write("#### Select type of plot: ")
+plot_type = st.selectbox("", ["ECDF","Between Purhcase Days Distribution"])
+if st.button("Generate"):
+    if plot_type == "ECDF":
+        plt.plot(ecdf.x,ecdf.y)
+        plt.title('Customer Between Purchase Days ECDF Plot')
+        plt.xlabel('Between Purchase Days')
+        plt.ylabel('Cumulative probability')
+        st.pyplot()
+    if plot_type == "Between Purhcase Days Distribution":
+        st.write(sns.distplot(online_retail_data_UK_Final[online_retail_data_UK_Final['CustomerID']==Cust_ID]['Between_purchase_days'].dropna()))
+        plt.title('Customer Between Purchase Days Distribution')
+        st.pyplot()
 
 CustID_Last_Purchase = online_retail_data_UK_Final[online_retail_data_UK_Final['CustomerID'] == Cust_ID]['Purchase_Date'].max()
 st.write('Customers last purchase date from current date in dataset [2011/12/09] - ' + str(CustID_Last_Purchase))
